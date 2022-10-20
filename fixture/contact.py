@@ -22,7 +22,7 @@ class ContactHelper:
         wd.find_element_by_name("byear").click()
         wd.find_element_by_name("byear").send_keys(contact.byear)
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
-        wd.find_element_by_link_text("home page").click()
+
 
 
     def delete_first(self):
