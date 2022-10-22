@@ -8,8 +8,11 @@ class ContactHelper:
 
     def create(self, contact):
         wd = self.app.wd
+        self.app.open_main_page()
+        wd.find_element_by_link_text("add new").click()
         self.fill_form(contact)
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
+        self.return_home_page()
 
     def fill_form(self, contact):
         wd = self.app.wd
