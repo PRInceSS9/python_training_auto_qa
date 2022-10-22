@@ -2,19 +2,19 @@ from model.group import Group
 
 
 def test_modify_group_name(app):
-    app.open_main_page()
-    app.group.open_page()
+    if app.group.count() == 0:
+        app.group.create(Group(name="test", header="group test", footer="test group"))
     app.group.modify_first_group(Group(name="New name group"))
 
 
 def test_modify_group_header(app):
-    app.open_main_page()
-    app.group.open_page()
+    if app.group.count() == 0:
+        app.group.create(Group(name="test", header="group test", footer="test group"))
     app.group.modify_first_group(Group(header="New name header"))
 
 
 def test_modify_group_footer(app):
-    app.open_main_page()
-    app.group.open_page()
+    if app.group.count() == 0:
+        app.group.create(Group(name="test", header="group test", footer="test group"))
     app.group.modify_first_group(Group(footer="New name footer"))
 

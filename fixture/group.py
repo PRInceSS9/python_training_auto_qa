@@ -26,15 +26,19 @@ class GroupHelper:
             wd.find_element_by_name(field_name).send_keys(text)
     def create(self, group):
         wd = self.app.wd
+        self.open_page()
         wd.find_element_by_name("new").click()
         self.fill_group_form(group)
         wd.find_element_by_xpath("//form[@action='/addressbook/group.php']").click()
         wd.find_element_by_name("submit").click()
+        self.return_to_groups_page()
 
     def delete_first(self):
         wd = self.app.wd
+        self.open_page()
         self.select_first_group()
         wd.find_element_by_name("delete").click()
+        self.return_to_groups_page()
 
     def select_first_group(self):
         wd = self.app.wd
@@ -48,6 +52,11 @@ class GroupHelper:
         self.fill_group_form(new_group_date)
         wd.find_element_by_name("update").click()
         self.return_to_groups_page()
+
+    def count(self):
+        wd = self.app.wd
+        self.open_page()
+        return len(wd.find_elements_by_name("selected[]"))
 
 
 
