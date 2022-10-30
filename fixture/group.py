@@ -1,5 +1,6 @@
 from model.group import Group
 
+
 class GroupHelper:
     def __init__(self, app):
         self.app = app
@@ -25,6 +26,7 @@ class GroupHelper:
             wd.find_element_by_name(field_name).click()
             wd.find_element_by_name(field_name).clear()
             wd.find_element_by_name(field_name).send_keys(text)
+
     def create(self, group):
         wd = self.app.wd
         self.open_page()
