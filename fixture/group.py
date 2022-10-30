@@ -37,27 +37,36 @@ class GroupHelper:
         self.return_to_groups_page()
         self.group_cache = None
 
-    def delete_first(self):
+    def delete_group_by_index(self, index):
         wd = self.app.wd
         self.open_page()
-        self.select_first_group()
+        self.select_group_by_index(index)
         wd.find_element_by_name("delete").click()
         self.return_to_groups_page()
         self.group_cache = None
 
-    def select_first_group(self):
-        wd = self.app.wd
-        wd.find_element_by_name("selected[]").click()
+    def delete_first(self):
+        self.delete_group_by_index(0)
 
-    def modify_first_group(self, new_group_date):
+    def select_group_by_index(self, index):
+        wd = self.app.wd
+        wd.find_elements_by_name("selected[]")[index].click()
+
+    def select_first_group(self):
+        self.select_group_by_index(0)
+
+    def modify_group_by_index(self, index, new_group_date):
         wd = self.app.wd
         self.open_page()
-        self.select_first_group()
+        self.select_group_by_index(index)
         wd.find_element_by_name("edit").click()
         self.fill_group_form(new_group_date)
         wd.find_element_by_name("update").click()
         self.return_to_groups_page()
         self.group_cache = None
+
+    def modify_first_group(self, new_group_date):
+        self.select_group_by_index(0)
 
     def count(self):
         wd = self.app.wd
