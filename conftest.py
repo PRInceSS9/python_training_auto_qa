@@ -25,3 +25,4 @@ def stop(request):
 
     request.addfinalizer(fin)
     return fixture
+
