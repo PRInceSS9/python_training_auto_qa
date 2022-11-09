@@ -10,4 +10,6 @@ def test_firstname_on_home_page(app):
 
 
 def merge_emails_like_on_home_page(contact):
-    return "\n".join([contact.email, contact.email2, contact.email3])
+    return "\n".join(filter(lambda x: x != "",
+                            filter(lambda x: x is not None,
+                                       [contact.email, contact.email2, contact.email3])))
