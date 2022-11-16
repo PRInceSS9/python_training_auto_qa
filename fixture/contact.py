@@ -25,6 +25,10 @@ class ContactHelper:
         self.change_field_select_value("bday", contact.bday)
         self.change_field_select_value("bmonth", contact.bmonth)
         self.change_field_text_value("byear", contact.byear)
+        self.change_field_text_value("home", contact.homephone)
+        self.change_field_text_value("mobile", contact.mobilephone)
+        self.change_field_text_value("work", contact.workphone)
+        self.change_field_text_value("phone2", contact.secondaryphone)
 
     def change_field_select_value(self, field_name, var):
         wd = self.app.wd
