@@ -68,7 +68,7 @@ class ContactHelper:
 
     def select_contact_by_id(self, id):
         wd = self.app.wd
-        wd.find_element_by_xpath("//input[@value='{}']".format(id)).click()
+        wd.find_element_css_selector("input[value='%s']" % id).click()
 
     def select_first_contact(self):
         self.select_contact_by_index(0)
@@ -85,7 +85,7 @@ class ContactHelper:
     def modify_contact_by_id(self, id, new_contact_data):
         wd = self.app.wd
         self.app.open_main_page()
-        wd.find_element_by_xpath("//a[@href='http://localhost/addressbook/edit.php?id='%s']" % id).click()
+        wd.find_element_by_xpath("//a[@href='edit.php?id={}']".format(id)).click()
         self.fill_form(new_contact_data)
         wd.find_element_by_name("update").click()
         self.return_home_page()
