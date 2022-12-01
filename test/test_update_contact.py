@@ -3,7 +3,7 @@ from random import randrange
 
 
 def test_modify_contact_firstname(app, db, check_ui):
-    if len(db.get_group_list()) == 0:
+    if len(db.get_contact_list()) == 0:
         app.contact.create(Contact(firstname="Василий", middlename="Анатольевич", lastname="Кусков", bday="9",
                                    bmonth="November", byear="1998"))
     old_contacts = db.get_contact_list()
