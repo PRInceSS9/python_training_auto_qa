@@ -169,6 +169,7 @@ class ContactHelper:
         wd.find_element_by_name("to_group").click()
         Select(wd.find_element_by_name("to_group")).select_by_visible_text(name)
         wd.find_element_by_name("add").click()
+        wd.find_element_by_link_text("group page \"{}\"".format(name)).click()
 
     def del_contact_from_group(self, id):
         wd = self.app.wd

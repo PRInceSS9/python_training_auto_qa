@@ -1,5 +1,6 @@
 from model.contact import Contact
 from model.group import Group
+from fixture.orm import ORMFixture
 import random
 
 
@@ -14,3 +15,5 @@ def test_add_contact_to_group(app, db):
     all_groups = db.get_group_list()
     group = random.choice(all_groups)
     app.contact.add_contact_to_group(contact.id, group.name)
+    contacts_in_group = orm.get_contacts_in_group(group)
+    assert contact in contacts_in_group
