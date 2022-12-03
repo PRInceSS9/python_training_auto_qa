@@ -8,7 +8,8 @@ def test_modify_contact_firstname(app, db, check_ui):
                                    bmonth="November", byear="1998"))
     old_contacts = db.get_contact_list()
     index = randrange(len(old_contacts))
-    contact = Contact(firstname="Upd_firstname")
+    contact = Contact(firstname="Ivan", middlename="Анатольевич", lastname="Кусков", bday="9",
+                                   bmonth="November", byear="1998")
     contact.id = int(old_contacts[index].id)
     app.contact.modify_contact_by_id(contact.id, contact)
     new_contacts = db.get_contact_list()
@@ -17,9 +18,6 @@ def test_modify_contact_firstname(app, db, check_ui):
     assert sorted(old_contacts, key=Contact.id_or_max) == sorted(new_contacts, key=Contact.id_or_max)
     if check_ui:
         assert sorted(new_contacts, key=Contact.id_or_max) == sorted(app.contact.get_contact_list(), key=Contact.id_or_max)
-
-
-
 
 # def test_modify_contact_middlename(app):
 #     if app.contact.py.count() == 0:
