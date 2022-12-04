@@ -10,7 +10,7 @@ def test_modify_contact_firstname(app, db, check_ui):
     index = randrange(len(old_contacts))
     contact = Contact(firstname="Ivan", middlename="Анатольевич", lastname="Кусков", bday="9",
                                    bmonth="November", byear="1998")
-    contact.id = int(old_contacts[index].id)
+    contact.id = old_contacts[index].id
     app.contact.modify_contact_by_id(contact.id, contact)
     new_contacts = db.get_contact_list()
     assert len(old_contacts) == len(new_contacts)

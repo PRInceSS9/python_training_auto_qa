@@ -7,9 +7,9 @@ import importlib
 from fixture.db import DbFixture
 
 
-
 fixture = None
 target = None
+
 
 def load_config(file):
     global target
