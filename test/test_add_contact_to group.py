@@ -1,10 +1,9 @@
 from model.contact import Contact
 from model.group import Group
-from fixture.orm import ORMFixture
 import random
 
 
-def test_add_contact_to_group(app, db):
+def test_add_contact_to_group(app, orm, db):
     if len(db.get_contact_list()) == 0:
         app.contact.create(Contact(firstname="Василий", middlename="Анатольевич", lastname="Кусков", bday="9",
                                    bmonth="November", byear="1998"))
