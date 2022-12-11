@@ -16,3 +16,5 @@ def test_add_contact_to_group(app, orm, db):
     app.contact.add_contact_to_group(contact.id, group.name)
     contacts_in_group = orm.get_contacts_in_group(group)
     assert contact in contacts_in_group
+
+    

@@ -3,7 +3,7 @@ from model.group import Group
 import random
 
 
-def test_delete_contact_from_group(app, db):
+def test_delete_contact_from_group(app, db, orm):
     if len(db.get_contact_list()) == 0:
         app.contact.create(Contact(firstname="Василий", middlename="Анатольевич", lastname="Кусков", bday="9",
                                    bmonth="November", byear="1998"))
