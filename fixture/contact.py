@@ -163,18 +163,23 @@ class ContactHelper:
         secondaryphone = re.search("S: (.*)", text).group(1)
         return Contact(homephone=homephone, mobilephone=mobilephone, workphone=workphone, secondaryphone=secondaryphone)
 
-    def add_contact_to_group(self, id, name):
+    def add_contact_to_group(self, id, group_id):
         wd = self.app.wd
+        self.app.open_main_page()
         self.select_contact_by_id(id)
         wd.find_element_by_name("to_group").click()
-        Select(wd.find_element_by_name("to_group")).select_by_visible_text(name)
+        xpath = f"//select[@name='group']/option[@value='{group_id}']"
+        wd.find_element_by_xpath(xpath).click()
         wd.find_element_by_name("add").click()
-        wd.find_element_by_link_text("group page \"{}\"".format(name)).click()
 
-    def del_contact_from_group(self, id):
-        wd = self.app.wd
-        self.select_contact_by_id(id)
-        wd.find_element_by_xpath("//input[@name='remove']").click()
+    def del_contact_by_id_from_group(self, id, group_id):
+         wd = self.app.wd
+         self.app.open_main_page()
+         wd.find_element_by_name("group").click()
+         xpath = f"//select[@name='group']/option[@value='{group_id}']"
+         wd.find_element_by_xpath(xpath).click()
+         self.select_contact_by_id(id)
+         wd.find_element("name", 'remove').click()
 
     def get_id_from_group_view_page(self, name):
         wd = self.app.wd

@@ -13,8 +13,7 @@ def test_add_contact_to_group(app, orm, db):
     contact = random.choice(all_contacts)
     all_groups = db.get_group_list()
     group = random.choice(all_groups)
-    app.contact.add_contact_to_group(contact.id, group.name)
+    app.contact.add_contact_to_group(contact.id, group.id)
     contacts_in_group = orm.get_contacts_in_group(group)
     assert contact in contacts_in_group
 
-    
